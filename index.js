@@ -1,12 +1,16 @@
 const express = require('express')
 const BodyParser = require('body-parser')
 const cors = require('cors')
+const transcribeRouter = require('./transcribe')
 const app = express()
 const PORT = process.env.PORT || 3000;
 
 app.use(BodyParser.json())
 app.use(BodyParser.urlencoded({ extended: true }))
 app.use(cors())
+
+// Image transcription endpoint (Claude Vision AI)
+app.use('/transcribe', transcribeRouter)
 
 
 let fruits = ['Banana', 'Apple', 'Melon', 'Mangosteen', 'Peach', 'Raspberry', 'Blueberry', 'Avocado', 'Grapes','Pomegranite','Tangerine', 'Mango', 'Cherry', 'Tomato','Huckleberry', 'Lychee', 'Durian', 'Blackberry']
